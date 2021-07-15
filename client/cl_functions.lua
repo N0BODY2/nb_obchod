@@ -31,7 +31,6 @@ function KupovaciMenu()
 				elements = elements
 			},
 		function(data, menu)
-			print(data.current.value)
             TriggerServerEvent('nb_obchudek:server:mainevent', "buy", data.current.itemName, data.current.BuyPrice, data.current.value)
 		end, function(data, menu)
 			menu.close()
@@ -66,9 +65,7 @@ function ProdejniMenu()
 		},
 	function(data, menu)
 
-			if data.current.itemName == data.current.itemName then
-                TriggerServerEvent('nb_obchudek:server:mainevent', "sell", data.current.itemName, data.current.SellPrice , data.current.value)
-			end	
+            TriggerServerEvent('nb_obchudek:server:mainevent', "sell", data.current.itemName, data.current.SellPrice , data.current.value)
             
         end, function(data, menu)
             menu.close()
