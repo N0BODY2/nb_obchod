@@ -43,7 +43,6 @@ function OpenObchodMenu()
     }, function(data, menu)
         local action = data.current.value
         local player = PlayerPedId()
-        local vehicle = GetVehiclePedIsIn(player, false)
         
 		if action == "koupit" then
 			KupovaciMenu()
