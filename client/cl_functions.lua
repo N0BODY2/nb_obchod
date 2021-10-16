@@ -1,10 +1,13 @@
 Citizen.CreateThread(function()
-        RequestModel(Config.Ped)
-        while not HasModelLoaded(Config.Ped) do
-            Wait(10)
-        end
-        ped = CreatePed(4, Config.Ped, Config.ObchodNPC, 213.01, false, true)
+    RequestModel(Config.Ped)
+    while not HasModelLoaded(Config.Ped) do
+        Wait(10)
+    end
+	for k,v in pairs(Config.Obchod) do
+		local vectormore = vector3(v.x,v.y,v.z-1.0)
+		ped = CreatePed(4, Config.Ped, vectormore, 213.01, false, true)
 		FreezeEntityPosition(ped, true)
+	end
 end)
 
 function KupovaciMenu()

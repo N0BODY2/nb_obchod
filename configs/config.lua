@@ -1,7 +1,8 @@
 Config = {}
 
-Config.Obchod = vector3(412.42, 314.41, 103.02)
-Config.ObchodNPC = vector3(412.25, 314.95, 102.13)
+Config.Obchod = {
+	vector3(412.42, 314.41, 103.02),
+} 
 
 Config.Ped = "a_f_m_ktown_02"
 

@@ -15,18 +15,21 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(5)
-		local coords = GetEntityCoords(PlayerPedId())
-		local distance = #(coords - Config.Obchod)
-		local sleep = true
-		if distance < 10 and not inmenu then 
-			DrawText3D(Config.ObchodNPC.x, Config.ObchodNPC.y, Config.ObchodNPC.z+2, '[E] SHOP')
-			sleep = false
-			if distance < 1 and IsControlJustPressed(0, 38) then 
-				OpenObchodMenu()
-			end			
-		end
-		if sleep then 
-			Citizen.Wait(1500)
+		local ped = PlayerPedId()
+		local coords = GetEntityCoords(ped)
+		for k,v in pairs(Config.Obchod) do
+			local distance = #(coords - v)
+			local sleep = true
+			if distance < 10 and not inmenu then 
+				DrawText3D(v.x, v.y, v.z+2, '[E] SHOP')
+				sleep = false
+				if distance < 1 and IsControlJustPressed(0, 38) then 
+					OpenObchodMenu()
+				end			
+			end
+			if sleep then 
+				Citizen.Wait(1500)
+			end
 		end
 	end
 end)
@@ -42,7 +45,6 @@ function OpenObchodMenu()
         }
     }, function(data, menu)
         local action = data.current.value
-        local player = PlayerPedId()
         
 		if action == "koupit" then
 			KupovaciMenu()
